@@ -1,0 +1,26 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+<textarea id="mySentiment" style="width: 500px;height:500px;"></textarea>
+
+<button id="getSentiment" onclick="GetSentiment()">Analyse</button>
+<br>
+<textarea id="result" style="width: 200px;height:100px;"></textarea>
+
+<script>
+function GetSentiment(){
+let url = 'https://localhost:3000/sentiment';
+
+let sentimentText = document.getElementById('mySentiment').value;
+
+    fetch(url+"?sentiment="+sentimentText)
+    .then((resp) => resp.json()) // Transform the data into json
+    .then(function(data) {
+        console.log(data);
+        document.getElementById("result").value = "Comparative:"+data.comparative +"\n"+ "No of words: "+data.numWords+"\n"+"Score:"+data.score;
+    })
+}
+</script>
+
+{{!-- JSON response format below --}}
+{{!-- comparative: 0language: "en"numHits: 0numWords: 1score: 0type: "senticon"__proto__: Object --}}
