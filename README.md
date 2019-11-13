@@ -2,6 +2,7 @@
 Getting the sentiment of the entered text using the NLP node js library. For this we are using NodeJS Express
 
 Steps:(which might be different from how you create)
+
 1 npm i -g express-generator
 
 2 express nlp -v hbs
